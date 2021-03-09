@@ -1,0 +1,205 @@
+parsers: # array
+#添加使用的订阅链接
+  - url: https://................
+    yaml:
+#添加网易云规则，可以设置自定义节点，只用于网易云音乐  
+      prepend-rules:
+        - DOMAIN,masuit.com,DIRECT # rules最前面增加一个规则
+        - DOMAIN,music.163.com,🎸 网易云音乐
+        - DOMAIN,api.iplay.163.com,🎸 网易云音乐
+        - DOMAIN,apm.music.163.com,🎸 网易云音乐
+        - DOMAIN,apm3.music.163.com,🎸 网易云音乐
+        - DOMAIN,interface.music.163.com,🎸 网易云音乐
+        - DOMAIN,interface3.music.163.com,🎸 网易云音乐
+        - IP-CIDR,39.105.63.80/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,45.254.48.1/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,47.100.127.239/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,59.111.160.195/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,59.111.160.197/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,59.111.181.35/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,59.111.181.38/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,59.111.181.60/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,101.71.154.241/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,103.126.92.132/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,103.126.92.133/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,112.13.119.17/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,112.13.122.1/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,115.236.118.33/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,115.236.121.1/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,118.24.63.156/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,193.112.159.225/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,223.252.199.66/32,🎸 网易云音乐,no-resolve
+        - IP-CIDR,223.252.199.67/32,🎸 网易云音乐,no-resolve
+
+        - DOMAIN,admusicpic.music.126.net,REJECT
+        - DOMAIN,iadmat.nosdn.127.net,REJECT
+        - DOMAIN,iadmusicmat.music.126.net,REJECT
+        - DOMAIN,iadmusicmatvideo.music.126.net,REJECT
+      append-proxy-groups:
+        - name: 🎸 网易云音乐
+          type: select
+          proxies:
+            - DIRECT
+            - 🎵 解锁节点1
+            
+#添加网易云解锁节点
+      prepend-proxies:
+        - name: 🎵 解锁节点1
+          type: ........
+          server: ..................
+          port: ...........
+          cipher: .............
+          password: .................
+          
+#添加https://github.com/Loyalsoldier/clash-rules，可能有重复          
+      mix-rule-providers:
+        - reject:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+          path: ./ruleset/reject.yaml
+          interval: 86400
+        - icloud:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+          path: ./ruleset/icloud.yaml
+          interval: 86400
+
+        - apple:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+          path: ./ruleset/apple.yaml
+          interval: 86400
+
+        - google:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+          path: ./ruleset/google.yaml
+          interval: 86400
+
+        - proxy:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+          path: ./ruleset/proxy.yaml
+          interval: 86400
+
+        - direct:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+          path: ./ruleset/direct.yaml
+          interval: 86400
+
+        - private:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+          path: ./ruleset/private.yaml
+          interval: 86400
+
+        - gfw:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+          path: ./ruleset/gfw.yaml
+          interval: 86400
+
+        - greatfire:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/greatfire.txt"
+          path: ./ruleset/greatfire.yaml
+          interval: 86400
+
+        - tld-not-cn:
+          type: http
+          behavior: domain
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+          path: ./ruleset/tld-not-cn.yaml
+          interval: 86400
+
+        - telegramcidr:
+          type: http
+          behavior: ipcidr
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+          path: ./ruleset/telegramcidr.yaml
+          interval: 86400
+
+        - cncidr:
+          type: http
+          behavior: ipcidr
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+          path: ./ruleset/cncidr.yaml
+          interval: 86400
+
+        - lancidr:
+          type: http
+          behavior: ipcidr
+          url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+          path: ./ruleset/lancidr.yaml
+          interval: 86400
+
+
+append-rules:
+  - PROCESS-NAME,v2ray,DIRECT
+  - PROCESS-NAME,xray,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,trojan,DIRECT
+  - PROCESS-NAME,trojan-go,DIRECT
+  - PROCESS-NAME,ss-local,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,leaf,DIRECT
+  - PROCESS-NAME,v2ray.exe,DIRECT
+  - PROCESS-NAME,xray.exe,DIRECT
+  - PROCESS-NAME,naive.exe,DIRECT
+  - PROCESS-NAME,trojan.exe,DIRECT
+  - PROCESS-NAME,trojan-go.exe,DIRECT
+  - PROCESS-NAME,ss-local.exe,DIRECT
+  - PROCESS-NAME,privoxy.exe,DIRECT
+  - PROCESS-NAME,leaf.exe,DIRECT
+  - PROCESS-NAME,Surge,DIRECT
+  - PROCESS-NAME,Surge 2,DIRECT
+  - PROCESS-NAME,Surge 3,DIRECT
+  - PROCESS-NAME,Surge 4,DIRECT
+  - PROCESS-NAME,Surge%202,DIRECT
+  - PROCESS-NAME,Surge%203,DIRECT
+  - PROCESS-NAME,Surge%204,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qBittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
+  - PROCESS-NAME,aria2c.exe,DIRECT
+  - PROCESS-NAME,BitComet.exe,DIRECT
+  - PROCESS-NAME,fdm.exe,DIRECT
+  - PROCESS-NAME,NetTransport.exe,DIRECT
+  - PROCESS-NAME,qbittorrent.exe,DIRECT
+  - PROCESS-NAME,Thunder.exe,DIRECT
+  - PROCESS-NAME,ThunderVIP.exe,DIRECT
+  - PROCESS-NAME,transmission-daemon.exe,DIRECT
+  - PROCESS-NAME,transmission-qt.exe,DIRECT
+  - PROCESS-NAME,uTorrent.exe,DIRECT
+  - PROCESS-NAME,WebTorrent.exe,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,DIRECT
+# 🐟 漏网之鱼是ACL4SSR的设置，属于PROXY，但是ACL4SSR的设置没有PROXY会报错 
+  - RULE-SET,proxy,🐟 漏网之鱼
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,telegramcidr,🐟 漏网之鱼
+  - GEOIP,,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🐟 漏网之鱼
