@@ -4,7 +4,6 @@ parsers: # array
     yaml:
 #添加网易云规则，可以设置自定义节点，只用于网易云音乐  
       prepend-rules:
-        - DOMAIN,masuit.com,DIRECT # rules最前面增加一个规则
         - DOMAIN,music.163.com,🎸 网易云音乐
         - DOMAIN,api.iplay.163.com,🎸 网易云音乐
         - DOMAIN,apm.music.163.com,🎸 网易云音乐
