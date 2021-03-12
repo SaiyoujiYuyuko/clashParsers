@@ -15,64 +15,65 @@ parsers: # array
           cipher: .............
           password: .................
           
-#添加https://github.com/Loyalsoldier/clash-rules，可能有重复          
+#添加https://github.com/Loyalsoldier/clash-rules，可能有重复  
+#合并进入ACL4SSR
       mix-rule-providers:
-        - reject:
+        - 🛑 广告拦截:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
           path: ./ruleset/reject.yaml
           interval: 86400
-        - icloud:
+        - 🍎 苹果服务:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
           path: ./ruleset/icloud.yaml
           interval: 86400
 
-        - apple:
+        - 🍎 苹果服务:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
           path: ./ruleset/apple.yaml
           interval: 86400
 
-        - google:
+        - 📢 谷歌FCM:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
           path: ./ruleset/google.yaml
           interval: 86400
 
-        - proxy:
+        - 🚀 节点选择:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
           path: ./ruleset/proxy.yaml
           interval: 86400
 
-        - direct:
+        - 🎯 全球直连:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
           path: ./ruleset/direct.yaml
           interval: 86400
 
-        - private:
+        - 🛡️ 隐私防护:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
           path: ./ruleset/private.yaml
           interval: 86400
 
-        - gfw:
+        - 🚀 节点选择:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
           path: ./ruleset/gfw.yaml
           interval: 86400
 
-        - greatfire:
+        - 🚀 节点选择:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/greatfire.txt"
@@ -86,27 +87,26 @@ parsers: # array
           path: ./ruleset/tld-not-cn.yaml
           interval: 86400
 
-        - telegramcidr:
+        - 📲 电报消息:
           type: http
           behavior: ipcidr
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
           path: ./ruleset/telegramcidr.yaml
           interval: 86400
 
-        - cncidr:
+        - 🎯 全球直连:
           type: http
           behavior: ipcidr
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
           path: ./ruleset/cncidr.yaml
           interval: 86400
 
-        - lancidr:
+        - 🎯 全球直连:
           type: http
           behavior: ipcidr
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
           path: ./ruleset/lancidr.yaml
           interval: 86400
-
 
 append-rules:
   - PROCESS-NAME,v2ray,DIRECT
