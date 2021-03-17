@@ -18,89 +18,103 @@ parsers: # array
 #添加https://github.com/Loyalsoldier/clash-rules，可能有重复  
 #合并进入ACL4SSR
       mix-rule-providers:
+      	#广告域名列表 reject.txt
         - 🛑 广告拦截:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
           path: ./ruleset/reject.yaml
           interval: 86400
+          
+        #iCloud 域名列表 icloud.txt
         - 🍎 苹果服务:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
           path: ./ruleset/icloud.yaml
           interval: 86400
-
+          
+        #Apple 域名列表 apple.txt
         - 🍎 苹果服务:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
           path: ./ruleset/apple.yaml
           interval: 86400
-
+          
+        #Google 域名列表 google.txt
         - 📢 谷歌FCM:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
           path: ./ruleset/google.yaml
           interval: 86400
-
+          
+        #代理域名列表 proxy.txt
         - 🚀 节点选择:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
           path: ./ruleset/proxy.yaml
           interval: 86400
-
+          
+        #直连域名列表 direct.txt
         - 🎯 全球直连:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
           path: ./ruleset/direct.yaml
           interval: 86400
-
+          
+       #私有网络专用域名列表 private.txt
         - 🛡️ 隐私防护:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
           path: ./ruleset/private.yaml
           interval: 86400
-
+          
+        #GFWList 域名列表 gfw.txt
         - 🚀 节点选择:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
           path: ./ruleset/gfw.yaml
           interval: 86400
-
+          
+        #GreatFire 域名列表 greatfire.txt
         - 🚀 节点选择:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/greatfire.txt"
           path: ./ruleset/greatfire.yaml
           interval: 86400
-
+          
+        #非中国大陆使用的顶级域名列表 tld-not-cn.txt
         - tld-not-cn:
           type: http
           behavior: domain
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
           path: ./ruleset/tld-not-cn.yaml
           interval: 86400
-
+          
+        #Telegram 使用的 IP 地址列表 telegramcidr.txt
         - 📲 电报消息:
           type: http
           behavior: ipcidr
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
           path: ./ruleset/telegramcidr.yaml
           interval: 86400
-
+          
+        #中国大陆 IPv4 地址列表 cncidr.txt
         - 🎯 全球直连:
           type: http
           behavior: ipcidr
           url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
           path: ./ruleset/cncidr.yaml
           interval: 86400
-
+          
+        #局域网 IP 及保留 IP 地址列表 lancidr.txt
         - 🎯 全球直连:
           type: http
           behavior: ipcidr
@@ -108,62 +122,52 @@ parsers: # array
           path: ./ruleset/lancidr.yaml
           interval: 86400
 
-append-rules:
-  - PROCESS-NAME,v2ray,DIRECT
-  - PROCESS-NAME,xray,DIRECT
-  - PROCESS-NAME,naive,DIRECT
-  - PROCESS-NAME,trojan,DIRECT
-  - PROCESS-NAME,trojan-go,DIRECT
-  - PROCESS-NAME,ss-local,DIRECT
-  - PROCESS-NAME,privoxy,DIRECT
-  - PROCESS-NAME,leaf,DIRECT
-  - PROCESS-NAME,v2ray.exe,DIRECT
-  - PROCESS-NAME,xray.exe,DIRECT
-  - PROCESS-NAME,naive.exe,DIRECT
-  - PROCESS-NAME,trojan.exe,DIRECT
-  - PROCESS-NAME,trojan-go.exe,DIRECT
-  - PROCESS-NAME,ss-local.exe,DIRECT
-  - PROCESS-NAME,privoxy.exe,DIRECT
-  - PROCESS-NAME,leaf.exe,DIRECT
-  - PROCESS-NAME,Surge,DIRECT
-  - PROCESS-NAME,Surge 2,DIRECT
-  - PROCESS-NAME,Surge 3,DIRECT
-  - PROCESS-NAME,Surge 4,DIRECT
-  - PROCESS-NAME,Surge%202,DIRECT
-  - PROCESS-NAME,Surge%203,DIRECT
-  - PROCESS-NAME,Surge%204,DIRECT
-  - PROCESS-NAME,Thunder,DIRECT
-  - PROCESS-NAME,DownloadService,DIRECT
-  - PROCESS-NAME,qBittorrent,DIRECT
-  - PROCESS-NAME,Transmission,DIRECT
-  - PROCESS-NAME,fdm,DIRECT
-  - PROCESS-NAME,aria2c,DIRECT
-  - PROCESS-NAME,Folx,DIRECT
-  - PROCESS-NAME,NetTransport,DIRECT
-  - PROCESS-NAME,uTorrent,DIRECT
-  - PROCESS-NAME,WebTorrent,DIRECT
-  - PROCESS-NAME,aria2c.exe,DIRECT
-  - PROCESS-NAME,BitComet.exe,DIRECT
-  - PROCESS-NAME,fdm.exe,DIRECT
-  - PROCESS-NAME,NetTransport.exe,DIRECT
-  - PROCESS-NAME,qbittorrent.exe,DIRECT
-  - PROCESS-NAME,Thunder.exe,DIRECT
-  - PROCESS-NAME,ThunderVIP.exe,DIRECT
-  - PROCESS-NAME,transmission-daemon.exe,DIRECT
-  - PROCESS-NAME,transmission-qt.exe,DIRECT
-  - PROCESS-NAME,uTorrent.exe,DIRECT
-  - PROCESS-NAME,WebTorrent.exe,DIRECT
-  - DOMAIN,clash.razord.top,DIRECT
-  - DOMAIN,yacd.haishan.me,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,reject,REJECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,google,DIRECT
-# 🐟 漏网之鱼是ACL4SSR的设置，属于PROXY，但是ACL4SSR的设置没有PROXY会报错 
-  - RULE-SET,proxy,🐟 漏网之鱼
-  - RULE-SET,direct,DIRECT
-  - RULE-SET,telegramcidr,🐟 漏网之鱼
-  - GEOIP,,DIRECT
-  - GEOIP,CN,DIRECT
-  - MATCH,🐟 漏网之鱼
+      append-rules:
+        - PROCESS-NAME,v2ray,DIRECT
+        - PROCESS-NAME,xray,DIRECT
+        - PROCESS-NAME,naive,DIRECT
+        - PROCESS-NAME,trojan,DIRECT
+        - PROCESS-NAME,trojan-go,DIRECT
+        - PROCESS-NAME,ss-local,DIRECT
+        - PROCESS-NAME,privoxy,DIRECT
+        - PROCESS-NAME,leaf,DIRECT
+        - PROCESS-NAME,v2ray.exe,DIRECT
+        - PROCESS-NAME,xray.exe,DIRECT
+        - PROCESS-NAME,naive.exe,DIRECT
+        - PROCESS-NAME,trojan.exe,DIRECT
+        - PROCESS-NAME,trojan-go.exe,DIRECT
+        - PROCESS-NAME,ss-local.exe,DIRECT
+        - PROCESS-NAME,privoxy.exe,DIRECT
+        - PROCESS-NAME,leaf.exe,DIRECT
+        - PROCESS-NAME,Surge,DIRECT
+        - PROCESS-NAME,Surge 2,DIRECT
+        - PROCESS-NAME,Surge 3,DIRECT
+        - PROCESS-NAME,Surge 4,DIRECT
+        - PROCESS-NAME,Surge%202,DIRECT
+        - PROCESS-NAME,Surge%203,DIRECT
+        - PROCESS-NAME,Surge%204,DIRECT
+        - PROCESS-NAME,Thunder,DIRECT
+        - PROCESS-NAME,DownloadService,DIRECT
+        - PROCESS-NAME,qBittorrent,DIRECT
+        - PROCESS-NAME,Transmission,DIRECT
+        - PROCESS-NAME,fdm,DIRECT
+        - PROCESS-NAME,aria2c,DIRECT
+        - PROCESS-NAME,Folx,DIRECT
+        - PROCESS-NAME,NetTransport,DIRECT
+        - PROCESS-NAME,uTorrent,DIRECT
+        - PROCESS-NAME,WebTorrent,DIRECT
+        - PROCESS-NAME,aria2c.exe,DIRECT
+        - PROCESS-NAME,BitComet.exe,DIRECT
+        - PROCESS-NAME,fdm.exe,DIRECT
+        - PROCESS-NAME,NetTransport.exe,DIRECT
+        - PROCESS-NAME,qbittorrent.exe,DIRECT
+        - PROCESS-NAME,Thunder.exe,DIRECT
+        - PROCESS-NAME,ThunderVIP.exe,DIRECT
+        - PROCESS-NAME,transmission-daemon.exe,DIRECT
+        - PROCESS-NAME,transmission-qt.exe,DIRECT
+        - PROCESS-NAME,uTorrent.exe,DIRECT
+        - PROCESS-NAME,WebTorrent.exe,DIRECT
+        - DOMAIN,clash.razord.top,DIRECT
+        - DOMAIN,yacd.haishan.me,DIRECT
+        - GEOIP,,DIRECT
+        - GEOIP,CN,DIRECT
